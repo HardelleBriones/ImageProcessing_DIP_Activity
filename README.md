@@ -1,2 +1,2 @@
-# ImageProcessing_DIP1_Activity
+# ImageProcessing_DIP_Activity
 DIP activity Part 1 and Part 2
