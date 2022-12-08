@@ -155,6 +155,7 @@ namespace ImageProcessing_Activity
         /// <param name="e"></param>
         private void basicCopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             processed = new Bitmap(loaded.Width, loaded.Height);  
             for(int x =0; x<loaded.Width; x++)
                 for(int y=0; y<loaded.Height; y++)
@@ -174,6 +175,7 @@ namespace ImageProcessing_Activity
             Color sample;
             Color gray;
             Byte graydata;
+            processed = new Bitmap(loaded.Width, loaded.Height);
             //Grayscale Convertion;
             for (int x = 0; x <loaded.Width; x++)
             {
@@ -182,16 +184,16 @@ namespace ImageProcessing_Activity
                     sample = loaded.GetPixel(x, y);
                     graydata = (byte)((sample.R + sample.G + sample.B) / 3);
                     gray = Color.FromArgb(graydata, graydata, graydata);
-                    loaded.SetPixel(x, y, gray);
+                    processed.SetPixel(x, y, gray);
                 }
             }
             //histogram 1d data;
             int[] histdata = new int[256]; // array from 0 to 255
-            for (int x = 0; x < loaded.Width; x++)
+            for (int x = 0; x < processed.Width; x++)
             {
-                for (int y = 0; y < loaded.Height; y++)
+                for (int y = 0; y < processed.Height; y++)
                 {
-                    sample = loaded.GetPixel(x, y);
+                    sample = processed.GetPixel(x, y);
                     histdata[sample.R]++; // can be any color property r,g or b
                 }
             }
